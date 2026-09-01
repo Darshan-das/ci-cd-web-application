@@ -1,0 +1,9 @@
+services:
+  web:
+    build: .
+    image: devops-web-app:local
+    ports:
+      - "5000:5000"
+    environment:
+      APP_VERSION: ${APP_VERSION:-1.0.0}
+    restart: unless-stopped

@@ -1,0 +1,27 @@
+# Identifiable user and operational flows.
+
+```yaml
+businessFlowsContext:
+  businessFlows:
+    - id: browse-portfolio-app
+      name: Browse portfolio web application
+      description: A visitor opens the home page, sees deployment status and application version, and can navigate to the About page.
+      entryPoints:
+        - "GET /"
+        - "GET /about"
+      criticality: medium
+    - id: monitor-application-health
+      name: Monitor application health
+      description: Docker, CI, deployment automation, or an operator calls the health endpoint and expects a healthy JSON response.
+      entryPoints:
+        - "GET /health"
+      criticality: high
+    - id: automated-container-deployment
+      name: Build and deploy a verified container
+      description: A push to main runs tests, builds and publishes immutable and latest image tags, then deploys over SSH and rolls back after a failed health check.
+      entryPoints:
+        - ".github/workflows/ci.yml"
+        - ".github/workflows/cd.yml"
+        - "scripts/deploy.sh"
+      criticality: high
+```

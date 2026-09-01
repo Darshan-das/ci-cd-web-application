@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}About | NeonOps Console{% endblock %}
+
+{% block content %}
+<section class="about-layout">
+  <div class="card terminal-card">
+    <div class="terminal-bar">
+      <div class="terminal-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+      <span>system_manifest.txt</span><span class="terminal-id">READ_ONLY</span>
+    </div>
+    <div class="card-content">
+      <p class="eyebrow">// System manifest</p>
+      <h1>AUTOMATED<br><span>CI/CD PIPELINE</span></h1>
+      <p>This DevOps project uses Flask, pytest, Docker, Gunicorn, and GitHub Actions to demonstrate a reliable continuous integration workflow.</p>
+      <a class="button" href="{{ url_for('home') }}"><span>[</span> RETURN HOME <span>]</span></a>
+    </div>
+  </div>
+  <aside class="stack-panel">
+    <p class="panel-title">TECH_STACK.JSON</p>
+    <ul>
+      <li><span>01</span><b>FLASK</b><em>APPLICATION</em></li>
+      <li><span>02</span><b>PYTEST</b><em>VALIDATION</em></li>
+      <li><span>03</span><b>DOCKER</b><em>CONTAINER</em></li>
+      <li><span>04</span><b>GITHUB</b><em>AUTOMATION</em></li>
+    </ul>
+    <div class="checksum">CHECKSUM: <span>OK_200</span></div>
+  </aside>
+</section>
+{% endblock %}

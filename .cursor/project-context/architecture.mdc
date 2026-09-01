@@ -1,0 +1,49 @@
+# Live architecture context for the planned Flask application.
+
+```yaml
+architectureContext:
+  architecture:
+    summary: "A small stateless Flask web application served by Gunicorn, packaged as one non-root Docker container, validated by GitHub Actions, published to Docker Hub, and deployed to a single Ubuntu AWS EC2 host."
+    style: monolith
+    layers:
+      - name: http
+        paths:
+          - app.py
+          - templates
+          - static
+      - name: business
+        paths:
+          - app.py
+      - name: infrastructure
+        paths:
+          - Dockerfile
+          - docker-compose.yml
+          - .github/workflows
+          - scripts/deploy.sh
+    boundaries:
+      - Flask routes render templates or return JSON; templates do not contain deployment logic.
+      - Runtime configuration is read from environment variables, not committed secrets.
+      - Deployment automation interacts with Docker and EC2 without changing application behavior.
+    integrations:
+      - name: Docker Hub
+        type: container-registry
+      - name: GitHub Actions
+        type: ci-cd
+      - name: AWS EC2
+        type: compute-host
+    auth:
+      type: none
+      notes: The demonstration web application has no authenticated business functionality; CI/CD credentials are injected through GitHub Secrets.
+    errorHandling:
+      - Shell scripts fail fast and print useful diagnostics.
+      - Health endpoints return explicit JSON and HTTP status codes.
+    repositoryRelationships:
+      - primary: "."
+        consumes:
+          - Docker Hub
+          - GitHub Actions
+          - AWS EC2
+    diagrams:
+      existing:
+        - README.md Mermaid architecture diagram
+```

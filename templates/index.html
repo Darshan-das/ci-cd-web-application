@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Home | NeonOps Console{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="terminal-bar">
+    <div class="terminal-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+    <span>root@neonops:~/deploy</span>
+    <span class="terminal-id">SESSION_7F3A</span>
+  </div>
+  <div class="hero-content">
+    <div class="command-line"><span>root@pipeline:~$</span> ./deploy --production</div>
+    <p class="eyebrow">// Automated delivery protocol</p>
+    <h1>DEPLOYMENT<br><span>SUCCESSFUL<span class="cursor">_</span></span></h1>
+    <p class="hero-copy">A containerized Flask application forged in code, validated by tests, and shipped through an automated CI/CD pipeline.</p>
+    <div class="actions">
+      <a class="button" href="{{ url_for('about') }}"><span>[</span> EXPLORE SYSTEM <span>]</span></a>
+      <a class="text-link" href="{{ url_for('health') }}">RUN HEALTH CHECK <span>↗</span></a>
+    </div>
+  </div>
+  <div class="metrics" aria-label="Deployment metrics">
+    <div class="metric"><span class="metric-label">STATUS</span><strong><i class="pulse"></i> ONLINE</strong><small>All systems operational</small></div>
+    <div class="metric"><span class="metric-label">VERSION</span><strong>Version {{ app_version }}</strong><small>Production release</small></div>
+    <div class="metric"><span class="metric-label">RUNTIME</span><strong>DOCKER</strong><small>Isolated container</small></div>
+    <div class="metric"><span class="metric-label">PIPELINE</span><strong>PASS</strong><small>Tests verified</small></div>
+  </div>
+</section>
+<section class="process-strip" aria-label="Pipeline stages">
+  <span>01 <b>CODE</b></span><i>→</i><span>02 <b>TEST</b></span><i>→</i><span>03 <b>BUILD</b></span><i>→</i><span>04 <b>DEPLOY</b></span><i>✓</i>
+</section>
+{% endblock %}

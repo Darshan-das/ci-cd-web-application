@@ -1,0 +1,74 @@
+# Live project configuration generated from repository requirements.
+
+```yaml
+projectContext:
+  project:
+    name: 01-CICD-WEB-APP
+    displayName: Automated CI/CD Pipeline for a Containerized Web Application
+    type: web-application
+  repositories:
+    primary: "."
+    modifiable:
+      - "."
+    readOnly: []
+    involved:
+      - "."
+  technology:
+    languages:
+      - Python
+      - HTML
+      - CSS
+      - Bash
+      - YAML
+    languageVersions:
+      Python: "3.12"
+    frameworks:
+      - Flask
+      - Gunicorn
+      - pytest
+    buildTool: pip
+    testCommands:
+      fullSuite: "pytest"
+      singleClass: "pytest tests/test_app.py"
+    packageRoots:
+      - app.py
+      - templates
+      - static
+      - tests
+      - scripts
+    routeConfigPatterns:
+      - "app.py"
+  dependencies:
+    internal: []
+    external:
+      - Flask
+      - Gunicorn
+      - pytest
+      - Docker
+      - GitHub Actions
+      - Docker Hub
+      - AWS EC2
+  jira:
+    enabled: false
+    projectKey: TBD
+    baseUrl: TBD
+  bugbot:
+    enabled: false
+    repoUrl: TBD
+    triggerOnDraftPr: false
+    botLogins: []
+  branching:
+    defaultBranch: main
+  agentVerification:
+    runLocally: true
+    ciCommands:
+      - "pytest"
+      - "docker build -t devops-web-app:test ."
+    skipLocal: []
+    deferTo: GitHub Actions for remote CI/CD and deployment checks
+  constraints:
+    - Do not add Kubernetes, Terraform, ArgoCD, or unrelated advanced tooling.
+    - Never commit credentials or private keys.
+    - Keep the project understandable for beginner-to-intermediate DevOps learners.
+    - Do not claim Docker Hub or AWS EC2 deployment success without real external credentials and infrastructure.
+```

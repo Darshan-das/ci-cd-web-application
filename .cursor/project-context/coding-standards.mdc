@@ -1,0 +1,50 @@
+# Coding and review standards for this repository.
+
+```yaml
+codingStandards:
+  languages:
+    Python:
+      version: "3.12"
+      conventions:
+        - PEP 8 naming and readable small functions
+        - Configuration through environment variables
+    Bash:
+      conventions:
+        - Use set -Eeuo pipefail
+        - Quote variable expansions
+        - Make deployment idempotent
+  frameworks:
+    Flask:
+      - Use an application factory so tests and Gunicorn share the same setup.
+      - Keep routes simple and deterministic.
+  testing:
+    framework: pytest
+    runner: pytest
+    location: tests
+    requirements:
+      - Test all acceptance-critical routes and version rendering.
+      - Do not depend on external services in unit tests.
+  review:
+    dimensions:
+      - correctness
+      - security
+      - maintainability
+      - test coverage
+      - deployment safety
+      - beginner readability
+    securityChecks:
+      - No hard-coded credentials or private keys
+      - Container runs as a non-root user
+      - Only necessary ports are exposed
+      - GitHub Actions use least-privilege permissions
+  entropy:
+    removeOnTouch: true
+    blockReview:
+      - dead code
+      - duplicated deployment paths
+      - obsolete configuration
+      - dangling references
+  documentation:
+    stackRules: []
+    projectGuide: README.md
+```

@@ -1,0 +1,77 @@
+{
+  "workflowId": "c560efe0-973b-4512-81b9-66b879c0dd68",
+  "contractVersion": "1.1",
+  "workflowContext": {
+    "loadedAt": "2026-08-31T06:52:27.5339296Z",
+    "mdcPaths": {
+      "project": ".cursor/project-context/project.mdc",
+      "architecture": ".cursor/project-context/architecture.mdc",
+      "codingStandards": ".cursor/project-context/coding-standards.mdc",
+      "deployment": ".cursor/project-context/deployment.mdc",
+      "businessFlows": ".cursor/project-context/business-flows.mdc"
+    }
+  },
+  "currentState": "QA",
+  "context": {
+    "workType": "feature",
+    "baseBranch": "main",
+    "scopeSelection": 1,
+    "cleanup": false,
+    "autoRun": true,
+    "projectContextBootstrapped": true
+  },
+  "artifacts": {
+    "artifactSlug": "containerized-web-app-cicd-pipeline",
+    "requirementsPath": "docs/sdlc/c560efe0-973b-4512-81b9-66b879c0dd68/containerized-web-app-cicd-pipeline-requirements.md",
+    "sddPath": "docs/sdlc/c560efe0-973b-4512-81b9-66b879c0dd68/containerized-web-app-cicd-pipeline.md",
+    "planPath": ".cursor/sdlc-system/workflow-artifacts/c560efe0-973b-4512-81b9-66b879c0dd68/implementation-plan.md",
+    "epicId": "PENDING-EPIC"
+  },
+  "execution": {
+    "currentPhaseIndex": 6,
+    "phases": ["phase-1", "phase-2", "phase-3", "phase-4", "phase-5", "phase-6"],
+    "branch": "containerized-web-app-cicd-pipeline"
+  },
+  "pr": null,
+  "retryCounters": {
+    "bugbot": 0,
+    "qa": 0
+  },
+  "handoffHistory": [
+    {
+      "agent": "project-discovery",
+      "status": "READY_FOR_SDD",
+      "timestamp": "2026-08-31T06:55:04.262Z",
+      "nextAction": "invoke:sdd-architect"
+    },
+    {
+      "agent": "sdd-architect",
+      "status": "READY_FOR_JIRA",
+      "timestamp": "2026-08-31T06:58:56.836Z",
+      "nextAction": "invoke:jira",
+      "scopeSelection": 1,
+      "cleanup": false
+    },
+    {
+      "agent": "jira",
+      "status": "READY_FOR_PLANNING",
+      "timestamp": "2026-08-31T07:01:33.759Z",
+      "nextAction": "invoke:planning",
+      "dryRun": true
+    },
+    {
+      "agent": "planning",
+      "status": "READY_FOR_EXECUTION",
+      "timestamp": "2026-08-31T07:03:59.759Z",
+      "nextAction": "invoke:developer",
+      "phaseCount": 6
+    }
+  ],
+  "lastHandoff": {
+    "agent": "developer",
+    "status": "READY_FOR_QA",
+    "timestamp": "2026-08-31T08:16:39.273Z"
+  },
+  "lastError": null,
+  "updatedAt": "2026-08-31T08:16:39.273Z"
+}

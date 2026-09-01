@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#030806">
+    <title>{% block title %}NeonOps Console{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="container" aria-label="Main navigation">
+        <a class="brand" href="{{ url_for('home') }}">
+          <span class="brand-mark" aria-hidden="true">&gt;_</span>
+          <span>NEON<span class="brand-accent">OPS</span></span>
+        </a>
+        <div class="nav-links">
+          <a href="{{ url_for('home') }}"><span>01.</span> Home</a>
+          <a href="{{ url_for('about') }}"><span>02.</span> About</a>
+        </div>
+        <div class="live-indicator"><span></span> SYSTEM ONLINE</div>
+      </nav>
+    </header>
+    <main class="container">{% block content %}{% endblock %}</main>
+    <footer>
+      <div class="container footer-inner">
+        <span>FLASK // DOCKER // GITHUB ACTIONS</span>
+        <span class="footer-status">SECURE CONNECTION <b>●</b></span>
+      </div>
+    </footer>
+  </body>
+</html>

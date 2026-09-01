@@ -1,0 +1,40 @@
+# Deployment and operations context.
+
+```yaml
+deploymentContext:
+  deployment:
+    cloudProvider: AWS
+    ci:
+      provider: github-actions
+      prChecks:
+        - pytest
+        - Docker image build
+        - Container health smoke test
+      watchCommand: "gh pr checks --watch"
+    environments:
+      - name: local
+        deployMechanism: docker-compose
+        runCommand: "docker compose up -d"
+      - name: production
+        deployMechanism: GitHub Actions SSH to Ubuntu EC2
+        runCommand: "bash scripts/deploy.sh"
+    strategy:
+      type: rolling-replacement-single-host
+      featureFlags: none
+    rollback:
+      code: "Retain the pre-deployment image ID locally; if the new container fails its health check, replace it with a container started from that previous image."
+      limitations:
+        - A first deployment has no previous image to restore.
+        - Single-host replacement causes a brief restart window.
+    observability:
+      apm: TBD
+      logs: Docker container logs and GitHub Actions logs
+      healthEndpoint: /health
+    network:
+      publicPorts:
+        - "80/tcp"
+      restrictedPorts:
+        - "22/tcp from administrator IP only"
+      privateContainerPorts:
+        - "5000/tcp"
+```
