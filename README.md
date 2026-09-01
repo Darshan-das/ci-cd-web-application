@@ -7,6 +7,10 @@
 
 A portfolio-ready Flask application that demonstrates a secure container workflow and an automated CI/CD pipeline. The responsive interface uses a neon terminal design and displays the current application version and deployment state.
 
+## Preview
+
+![NeonOps deployment dashboard](assets/neonops-dashboard.png)
+
 ## Highlights
 
 - Responsive hacker-inspired NeonOps interface
